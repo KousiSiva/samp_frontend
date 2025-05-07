@@ -1,0 +1,44 @@
+.track-request-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f9fcff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .track-request-title {
+    text-align: center;
+    color: #145b5f;
+    margin-bottom: 25px;
+  }
+  
+  .request-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .request-table th,
+  .request-table td {
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    text-align: left;
+  }
+  
+  .status {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  
+  .status.pending {
+    color: orange;
+  }
+  
+  .status.approved {
+    color: green;
+  }
+  
+  .status.rejected {
+    color: red;
+  }
+  

@@ -1,0 +1,47 @@
+.admin-dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8f9;
+  }
+  
+  .admin-dashboard h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #070808;
+  }
+  
+  .admin-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    padding: 0 2rem;
+  }
+  
+  .dashboard-card,
+  .admin-options button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #0b0c0c;
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-card:hover,
+  .admin-options button:hover {
+    background-color: #e1f4f4;
+    transform: translateY(-3px);
+  }
+  
