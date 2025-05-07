@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MarkAttendance.css';
 
 export default function MarkAttendance() {
   const [status, setStatus] = useState('Present');
   const [date, setDate] = useState('');
   const [message, setMessage] = useState('');
+  const [studentName, setStudentName] = useState('');
 
-  const studentName = "Kousima"; 
+  useEffect(() => {
+    const name = localStorage.getItem('studentName');
+    if (name) {
+      setStudentName(name);
+    } else {
+      setMessage('Student not logged in.');
+    }
+  }, []);
 
   const handleMarkAttendance = () => {
     if (!date) {
@@ -14,22 +22,26 @@ export default function MarkAttendance() {
       return;
     }
 
-   
+    if (!studentName) {
+      setMessage('Student not logged in');
+      return;
+    }
+
     const storedAttendance = JSON.parse(localStorage.getItem('attendance')) || {};
-
-
     storedAttendance[date] = storedAttendance[date] || {};
     storedAttendance[date][studentName] = status;
 
-
     localStorage.setItem('attendance', JSON.stringify(storedAttendance));
-
-    setMessage(`Attendance marked as ${status} for ${studentName} on ${date}`);
+    setMessage(`Attendance marked as ${status}.`);
   };
 
   return (
     <div className="attendance-container">
       <h2 className="attendance-title">Mark Your Attendance</h2>
+
+      {studentName && (
+        <p className="student-name">Welcome, {studentName}</p>
+      )}
 
       <div className="form-group">
         <label className="label">Select Date</label>

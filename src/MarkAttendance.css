@@ -11,6 +11,7 @@
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
+    color :rgb(21, 112, 118);
   }
   
   .form-group {
@@ -47,6 +48,6 @@
   .message {
     margin-top: 10px;
     font-size: 16px;
-    color: #333;
+    color: #333333;
   }
   

@@ -9,7 +9,7 @@ export default function Dashboard() {
   const username = user?.username || 'User';
 
   const handleLogout = () => {
-    localStorage.removeItem('loggedInUser');
+   
     navigate('/');
   };
 

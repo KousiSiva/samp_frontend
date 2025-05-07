@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './Login.css';
 import './index.css';
@@ -32,7 +31,12 @@ const Signup = () => {
     };
 
     localStorage.setItem('loggedInUser', JSON.stringify(user));
-    navigate('/dashboard');
+
+    alert("Signed up successfully!");
+
+    setTimeout(() => {
+      navigate('/');
+    }, 1500);
   };
 
   return (

@@ -33,7 +33,7 @@ export default function AdminLeaveManagement() {
               <th>Tutor</th>
               <th>Leave Letter</th>
               <th>Action</th>
-              <th>Status</th> {/* Status as LAST column */}
+              <th>Status</th> 
             </tr>
           </thead>
           <tbody>

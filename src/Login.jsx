@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-  
+
     if (username === 'admin' && password === 'admin123') {
       const adminUser = { username: 'admin', role: 'admin' };
       localStorage.setItem('loggedInUser', JSON.stringify(adminUser));
@@ -25,10 +25,12 @@ const Login = () => {
         role: 'student'
       };
       localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+      localStorage.setItem('studentName', username);
+
       navigate('/dashboard');
     }
   };
-  
 
   return (
     <div className='wrapper'>

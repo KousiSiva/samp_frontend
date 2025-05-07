@@ -42,23 +42,12 @@ export default function LeaveRequest() {
     status: 'Pending'
   };
 
-  // Store the leave request
+
   localStorage.setItem('leaveRequests', JSON.stringify([...allRequests, newRequest]));
 
-  // Store notification for parent
   const profile = JSON.parse(localStorage.getItem('userProfile'));
-  const notifications = JSON.parse(localStorage.getItem('parentNotifications')) || [];
-
-  const newNotification = {
-    to: profile.parentEmail,
-    studentName: profile.fullName,
-    message: `Your child ${profile.fullName} has submitted a leave request.`,
-    date: new Date().toLocaleString()
-  };
-
-  localStorage.setItem('parentNotifications', JSON.stringify([...notifications, newNotification]));
-
-  alert('Leave request submitted and parent notified.');
+  
+  alert('Leave request submitted');
 };
 
   const currentTutors = tutorOptions[leaveData.department] || [];

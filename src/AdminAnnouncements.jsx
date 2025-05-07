@@ -40,9 +40,6 @@ export default function AdminAnnouncements() {
         <button onClick={handlePost}>Post Announcement</button>
       
 </div>
-
-    
-
     
   );
 }
