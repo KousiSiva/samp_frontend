@@ -17,7 +17,7 @@ export default function Profile() {
   useEffect(() => {
     const storedProfile = JSON.parse(localStorage.getItem('userProfile'));
     if (storedProfile) {
-      setProfileData(storedProfile);
+      setProfileData(prev => ({ ...prev, ...storedProfile }));
     }
   }, []);
 
@@ -39,7 +39,12 @@ export default function Profile() {
           <div key={key} className="form-group">
             <label>{key.replace(/([A-Z])/g, ' $1')}</label>
             {key === 'department' ? (
-              <select name="department" value={value} onChange={handleChange} required>
+              <select
+                name="department"
+                value={profileData.department}
+                onChange={handleChange}
+                required
+              >
                 <option value="">Select Department</option>
                 <option value="CSE">CSE</option>
                 <option value="ECE">ECE</option>
