@@ -61,6 +61,13 @@ justify-content: space-between;
    margin-right: 4px;
  
   }
+  .remember-label {
+    display: flex;
+    align-items: center;
+    gap: 1px; 
+    color: white;
+  }
+  
   
   .remember-forgot a{
     color:#fff;
