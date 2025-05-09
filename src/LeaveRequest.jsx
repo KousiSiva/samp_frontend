@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './LeaveRequest.css';
 
 export default function LeaveRequest() {
@@ -16,39 +16,26 @@ export default function LeaveRequest() {
     MECH: ['Robert Brown', 'Kiran Rao', 'Dinesh Mehta']
   };
 
-  useEffect(() => {
-    const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
-
-    setLeaveData({
-      name: profile.fullName || '',
-      rollNumber: profile.rollNumber || '',
-      department: profile.department || '',
-      tutor: '',
-      leaveLetter: ''
-    });
-  }, []);
-
   const handleChange = (e) => {
     setLeaveData({ ...leaveData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-  e.preventDefault();
-  const allRequests = JSON.parse(localStorage.getItem('leaveRequests')) || [];
+    e.preventDefault();
 
-  const newRequest = {
-    ...leaveData,
-    submittedAt: new Date().toLocaleDateString(),
-    status: 'Pending'
+    const newRequest = {
+      ...leaveData,
+      submittedAt: new Date().toLocaleDateString(),
+      status: 'Pending'
+    };
+
+    const allRequests = JSON.parse(localStorage.getItem('leaveRequests')) || [];
+    allRequests.push(newRequest);
+    localStorage.setItem('leaveRequests', JSON.stringify(allRequests));
+
+    alert('Leave request submitted');
+    console.log('Submitted Request:', newRequest);
   };
-
-
-  localStorage.setItem('leaveRequests', JSON.stringify([...allRequests, newRequest]));
-
-  const profile = JSON.parse(localStorage.getItem('userProfile'));
-  
-  alert('Leave request submitted');
-};
 
   const currentTutors = tutorOptions[leaveData.department] || [];
 
@@ -58,15 +45,33 @@ export default function LeaveRequest() {
       <form onSubmit={handleSubmit} className="leave-request-form">
         <div className="form-group">
           <label>Name</label>
-          <input type="text" name="name" value={leaveData.name} readOnly />
+          <input
+            type="text"
+            name="name"
+            value={leaveData.name}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Roll Number</label>
-          <input type="text" name="rollNumber" value={leaveData.rollNumber} readOnly />
+          <input
+            type="text"
+            name="rollNumber"
+            value={leaveData.rollNumber}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Department</label>
-          <input type="text" name="department" value={leaveData.department} readOnly />
+          <input
+            type="text"
+            name="department"
+            value={leaveData.department}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="form-group">
           <label>Tutor Selection</label>

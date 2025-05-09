@@ -12,23 +12,18 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
+    const validStudents = {
+      kousima: 'Kousima123',
+      anu: 'Anu123',
+      keerthi: 'Keerthi123',
+    };
+
     if (username === 'admin' && password === 'admin123') {
-      const adminUser = { username: 'admin', role: 'admin' };
-      localStorage.setItem('loggedInUser', JSON.stringify(adminUser));
       navigate('/admin-dashboard');
+    } else if (validStudents[username.toLowerCase()] === password) {
+      navigate('/dashboard', { state: { username } });
     } else {
-      const user = {
-        username,
-        email: `${username}@student.kce.edu`,
-        rollNumber: 'KCE' + Math.floor(Math.random() * 100000),
-        department: 'CSE',
-        role: 'student'
-      };
-      localStorage.setItem('loggedInUser', JSON.stringify(user));
-
-      localStorage.setItem('studentName', username);
-
-      navigate('/dashboard');
+      alert('Invalid User');
     }
   };
 
@@ -63,11 +58,9 @@ const Login = () => {
           </div>
 
           <div className="remember-forgot">
-  <label className="remember-label">
-    <input type="checkbox" /> Remember me
-  </label>
-  <a href="#">Forgot password?</a><br />
-</div>
+            <label className="remember-label"><input type="checkbox" />Remember me</label>
+            <a href="#">Forgot password?</a><br />
+          </div>
 
           <button type="submit">Login</button><br />
 

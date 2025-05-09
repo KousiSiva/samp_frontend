@@ -39,9 +39,6 @@ export default function MarkAttendance() {
     <div className="attendance-container">
       <h2 className="attendance-title">Mark Your Attendance</h2>
 
-      {studentName && (
-        <p className="student-name">Welcome, {studentName}</p>
-      )}
 
       <div className="form-group">
         <label className="label">Select Date</label>

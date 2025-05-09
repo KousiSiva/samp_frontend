@@ -1,15 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
 import './Dashboard.css';
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('loggedInUser'));
-  const username = user?.username || 'User';
+  const location = useLocation();
+  const { username } = location.state || { username: 'User' }; 
 
   const handleLogout = () => {
-   
     navigate('/');
   };
 
@@ -27,7 +26,7 @@ export default function Dashboard() {
       </div>
 
       <div className="main-dashboard">
-        <h1 className="dashboard-title">Welcome {username}</h1>
+        <h1 className="dashboard-title">Welcome {username}!</h1>
 
         <div className="dashboard-cards">
           <div className="dashboard-card" onClick={() => navigate('/mark-attendance')}>

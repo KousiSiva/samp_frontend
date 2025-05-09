@@ -16,7 +16,7 @@ export default function AdminDashboard() {
   });
 
   const handleLogout = () => {
-    localStorage.removeItem('loggedInUser');
+   
     navigate('/');
   };
 
